@@ -2,9 +2,6 @@
 const key = ",&appid=625d60473226f0d5e63d8af80299bbdc";
 const base = "https://api.openweathermap.org/data/2.5/weather?zip=";
 
-// we need to use proxy server to connect to the api from our client side code ..
-const proxyServer = "https://cors-anywhere.herokuapp.com/";
-
 // Create a new date instance dynamically with JS
 
 let date = new Date();
@@ -25,9 +22,7 @@ function buttonClicked(e) {
   let userInputContent = document.querySelector("#feelings").value;
 
   if (userInputZip && userInputContent) {
-    getWithZipCode(proxyServer + base + userInputZip + key).then(function (
-      data
-    ) {
+    getWithZipCode(base + userInputZip + key).then(function (data) {
       postData("/postData", {
         date: fullDate,
         temp: data,
@@ -92,8 +87,8 @@ const updateUI = async () => {
   try {
     const newData = await data.json();
     if (newData["temp"]) {
-      date.innerText = "Date: " + newData["date"];
-      temp.innerText = "Temp: " + newData["temp"];
+      date.innerHTML = "Date: " + newData["date"];
+      temp.innerHTML = "Temp: " + newData["temp"];
       content.innerHTML = "User feeling: " + newData["content"];
     }
   } catch (err) {
