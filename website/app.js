@@ -1,5 +1,5 @@
 /* Global Variables */
-const key = ",&appid=625d60473226f0d5e63d8af80299bbdc";
+const key = ",&appid=625d60473226f0d5e63d8af80299bbdc&units=metric";
 const base = "https://api.openweathermap.org/data/2.5/weather?zip=";
 
 // Create a new date instance dynamically with JS
@@ -43,7 +43,7 @@ const getWithZipCode = async (url) => {
     if (res["cod"] == "404" || res["cod"] == "400") {
       throw new Error(res["message"]);
     }
-    return res["main"]["temp"] + " K";
+    return res["main"]["temp"] + " C";
   } catch (err) {
     alert(err + " .. please try again .");
   }
